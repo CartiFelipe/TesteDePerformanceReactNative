@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 const Primeira = () => {
-  const seuNomeCompleto = "Seu Nome Completo";
+  const seuNomeCompleto = "Caio Felipe Fernandes de Andrade";
   const horaAtual = new Date().toLocaleTimeString();
 
   return (
