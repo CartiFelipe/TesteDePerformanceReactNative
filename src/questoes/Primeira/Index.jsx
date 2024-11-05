@@ -1,20 +1,28 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-
-const getCurrentTime = () => {
-  const now = new Date();
-  return now.toLocaleTimeString();
-};
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const Index = () => {
-  const nome = "Caio Felipe Fernandes de Andrade";
-  const horaAtual = getCurrentTime();
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    setCount(count - 1);
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>
-        Olá, {nome}! Agora são {horaAtual}
-      </Text>
+      <Text style={styles.counterText}>{count}</Text>
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity onPress={increment} style={styles.button}>
+          <Text style={styles.buttonText}>+</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={decrement} style={styles.button}>
+          <Text style={styles.buttonText}>-</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -24,12 +32,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF",
   },
-  text: {
-    fontSize: 20,
-    textAlign: "center",
+  counterText: {
+    fontSize: 48,
+    marginBottom: 20,
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+  },
+  button: {
     margin: 10,
+    padding: 10,
+    backgroundColor: "#DDDDDD",
+    borderRadius: 5,
+  },
+  buttonText: {
+    fontSize: 32,
   },
 });
 
