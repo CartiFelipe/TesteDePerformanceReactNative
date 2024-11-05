@@ -1,54 +1,56 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 
-const Index = () => {
-  const [count, setCount] = useState(0);
+export default function Index() {
+  const [text, setText] = useState("");
+  const [result, setResult] = useState("");
 
-  const increment = () => {
-    setCount(count + 1);
-  };
-
-  const decrement = () => {
-    setCount(count - 1);
+  const checkPalindrome = () => {
+    const cleanedText = text.replace(/[^A-Za-z0-9]/g, "").toLowerCase();
+    const reversedText = cleanedText.split("").reverse().join("");
+    if (cleanedText === reversedText) {
+      setResult("É um palíndromo");
+    } else {
+      setResult("Não é um palíndromo");
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.counterText}>{count}</Text>
-      <View style={styles.buttonsContainer}>
-        <TouchableOpacity onPress={increment} style={styles.button}>
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={decrement} style={styles.button}>
-          <Text style={styles.buttonText}>-</Text>
-        </TouchableOpacity>
-      </View>
+      <Text style={styles.title}>Verificador de Palíndromo</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Digite um texto"
+        value={text}
+        onChangeText={setText}
+      />
+      <Button title="Verificar" onPress={checkPalindrome} />
+      {result ? <Text style={styles.result}>{result}</Text> : null}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+    padding: 16,
   },
-  counterText: {
-    fontSize: 48,
-    marginBottom: 20,
+  title: {
+    fontSize: 24,
+    marginBottom: 16,
+    textAlign: "center",
   },
-  buttonsContainer: {
-    flexDirection: "row",
+  input: {
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+    marginBottom: 16,
+    paddingHorizontal: 8,
   },
-  button: {
-    margin: 10,
-    padding: 10,
-    backgroundColor: "#DDDDDD",
-    borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 32,
+  result: {
+    marginTop: 16,
+    fontSize: 18,
+    textAlign: "center",
   },
 });
-
-export default Index;
