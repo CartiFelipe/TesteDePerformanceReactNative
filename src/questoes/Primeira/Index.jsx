@@ -1,30 +1,36 @@
+import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { useState, useEffect } from "react";
-const index = () => {
+
+const getCurrentTime = () => {
+  const now = new Date();
+  return now.toLocaleTimeString();
+};
+
+const Index = () => {
   const nome = "Caio Felipe Fernandes de Andrade";
-  const [horaAtual, setHoraAtual] = useState(new Date().toLocaleTimeString());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setHoraAtual(new Date().toLocaleTimeString());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
+  const horaAtual = getCurrentTime();
 
   return (
-    <View style={style.container}>
-      <Text>Olá, {nome}!</Text>
-      <Text>Agora são: {horaAtual}</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>
+        Olá, {nome}! Agora são {horaAtual}
+      </Text>
     </View>
   );
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
-    borderBottomWidth: 1,
-    padding: 10,
+    backgroundColor: "#F5FCFF",
+  },
+  text: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
   },
 });
-export default index;
+
+export default Index;

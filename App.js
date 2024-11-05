@@ -1,11 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
+
 import Primeira from './src/questoes/Primeira';
 export default function App() {
   return (
     <View style={styles.container}>
       <Primeira />
+
+      <StatusBar style="auto" />
     </View>
   );
 }
