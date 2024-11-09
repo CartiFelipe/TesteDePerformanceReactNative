@@ -1,23 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import ProductLog from './src/views/productsLog/Index.jsx';
+import Products from './src/views/products/Index.jsx';
+import Main from "./src/views/main/Index.jsx";
 
-
-import Primeira from './src/questoes/Primeira/Index.jsx';
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Primeira />
+    <SafeAreaView style={styles.container}>
+      <Main />
 
-      <StatusBar style="auto" />
-    </View>
+
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#ddd",
+
   },
 });
