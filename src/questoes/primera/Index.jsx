@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 
-const Primeira = () => {
+const Index = () => {
   const seuNomeCompleto = "Caio Felipe Fernandes de Andrade";
   const horaAtual = new Date().toLocaleTimeString();
 
@@ -26,3 +26,4 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 });
+export default Index;
